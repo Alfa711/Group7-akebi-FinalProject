@@ -39,7 +39,9 @@ void inputData(HealthRecord records[], int days, HealthStandard std); // utk inp
 void printResult(HealthRecord records[], int days, char* name, int age, Gender gender, AgeGroup group); // utk nampilin hasil
 void printGender(Gender gender); // print jenis kelamin dari enum Gender
 void printAgeGroup(AgeGroup group); // print kelompok umur dari enum AgeGroup
-
+void printStatus(HealthStatus status); // print status kesehatan dari enum HealthStatus
+void analyzeStatus(HealthRecord *record); // analisis status: misal, kalo statusnya excellent, notesnya apa
+float calculateAverageDrink(HealthRecord records[], int days); // ngitung rata-rata air yg diminum dlm seminggu
 
 int main() {
     HealthRecord records[DAYS];
@@ -219,4 +221,36 @@ void printAgeGroup(AgeGroup group) {
         case ADULT: printf("Adult\n"); break;
         case OLD: printf("Old\n"); break;
     }
+}
+
+void printStatus(HealthStatus status) {
+    switch (status) {
+        case BAD: printf("Bad\n"); break;
+        case AVERAGE: printf("Average\n"); break;
+        case GOOD: printf("Good\n"); break;
+        case EXCELLENT: printf("Excellent\n"); break;
+    }
+}
+
+void analyzeStatus(HealthRecord *record) {
+    if (record->status == BAD) {
+        printf("Note                : Your habits need serious attention! Try to sleep better, drink more water, and get some exercise. You can do this :D\n");
+    } else if (record->status == AVERAGE) {
+        strcpy(record->notes.reminder, "You're on the right path, but there's still room for improvement. Small changes can make a big difference :D\n");
+        printf("Note                : %s\n", record->notes.reminder);
+    } else if (record->status == GOOD) {
+        strcpy(record->notes.reminder, "Good job maintaining healthy habits! Keep pushing yourself to reach excellence :D\n");
+        printf("Note                : %s\n", record->notes.reminder);
+    } else {
+        strcpy(record->notes.reminder, "Amazing! You're taking great care of your health. Stay consistent and inspire others too :D\n");
+        printf("Note                : %s\n", record->notes.reminder);
+    }
+}
+
+float calculateAverageDrink(HealthRecord records[], int days) {
+    float total = 0;
+    for (int i = 0; i < days; i++) {
+        total += records[i].drinkWater;
+    }
+    return total / days;
 }
