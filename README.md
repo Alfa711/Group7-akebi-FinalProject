@@ -6,3 +6,4 @@
 
 ---
 - Deskripsi
+Program kami bernama Habit Detector. Program ini dirancang untuk mengevaluasi kesehatan seseorang selama satu minggu melalui gaya hidupnya. Program ini mengumpulkan data harian terkait tiga aspek, yaitu konsumsi air putih, durasi tidur, dan waktu berolahraga. Pengguna akan diminta untuk memasukkan jenis kelamin dan usia yang digunakan untuk menentukan standar kesehatan berdasarkan kedua hal tersebut dengan sumber dari WHO.
