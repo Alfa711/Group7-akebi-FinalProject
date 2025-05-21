@@ -19,5 +19,5 @@ Program kami bernama Habit Detector. Program ini dirancang untuk mengevaluasi ke
 ## Log Kontribusi Tim
 - Dimar Ilham Tamara: Membuat: `typedef`, fungsi `main`, fungsi `getAgeGroup`, fungsi `getStandardByAgeGender`, dan fungsi `inputData`.
 - Danish Al Fayyadh Sunarta: Membuat: repositori, fungsi `printResult`, fungsi `printGender`, dan fungsi `printAgeGroup`.
-- Naufal Rahman: Membuat: fungsi `printStatus`, fungsi `analyzeStatus`, dan fungsi `pcalculateAverageDrink`.
+- Naufal Rahman: Membuat: fungsi `printStatus`, fungsi `analyzeStatus`, dan fungsi `calculateAverageDrink`.
 - Raihan Muhammad Nafis Al-Kautsar: Membuat: fungsi `calculateAverageSleep`, fungsi `calculateAverageExercise`, dan fungsi `calculateFinalStatus`.
