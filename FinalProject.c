@@ -36,6 +36,10 @@ typedef struct {
 AgeGroup getAgeGroup(int age); // nentuin batas umur pada tiap kelompok umur dan gender
 HealthStandard getStandardByAgeGender(int age, Gender gender); // nentuin batas minimal minum air, tidur, dan olahraga pada tiap kelompok umur dan gender
 void inputData(HealthRecord records[], int days, HealthStandard std); // utk input data
+void printResult(HealthRecord records[], int days, char* name, int age, Gender gender, AgeGroup group); // utk nampilin hasil
+void printGender(Gender gender); // print jenis kelamin dari enum Gender
+void printAgeGroup(AgeGroup group); // print kelompok umur dari enum AgeGroup
+
 
 int main() {
     HealthRecord records[DAYS];
