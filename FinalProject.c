@@ -42,6 +42,9 @@ void printAgeGroup(AgeGroup group); // print kelompok umur dari enum AgeGroup
 void printStatus(HealthStatus status); // print status kesehatan dari enum HealthStatus
 void analyzeStatus(HealthRecord *record); // analisis status: misal, kalo statusnya excellent, notesnya apa
 float calculateAverageDrink(HealthRecord records[], int days); // ngitung rata-rata air yg diminum dlm seminggu
+float calculateAverageSleep(HealthRecord records[], int days); // ngitung rata-rata waktu tidur dlm seminggu
+float calculateAverageExercise(HealthRecord records[], int days); // ngitung rata-rata lama olahraga dlm seminggu
+HealthStatus calculateFinalStatus(HealthRecord records[], int days); // nentuin status kesehatan pada minggu tersebut, dengan mengambil rata-rata status kesehatan dalam 7 hari
 
 int main() {
     HealthRecord records[DAYS];
@@ -253,4 +256,33 @@ float calculateAverageDrink(HealthRecord records[], int days) {
         total += records[i].drinkWater;
     }
     return total / days;
+}
+
+float calculateAverageSleep(HealthRecord records[], int days) {
+    float total = 0;
+    for (int i = 0; i < days; i++) {
+        total += records[i].sleepHours;
+    }
+    return total / days;
+}
+
+float calculateAverageExercise(HealthRecord records[], int days) {
+    float total = 0;
+    for (int i = 0; i < days; i++) {
+        total += records[i].exerciseMinutes;
+    }
+    return total / days;
+}
+
+HealthStatus calculateFinalStatus(HealthRecord records[], int days) {
+    int total = 0;
+    for (int i = 0; i < days; i++) {
+        total += records[i].status;
+    }
+    float average = (float)total / days;
+
+    if (average >= EXCELLENT - 0.5) return EXCELLENT;
+    else if (average >= GOOD - 0.5) return GOOD;
+    else if (average >= AVERAGE - 0.5) return AVERAGE;
+    else return BAD;
 }
