@@ -171,3 +171,48 @@ void inputData(HealthRecord records[], int days, HealthStandard standard) {
         }
     }
 }
+
+void printResult(HealthRecord records[], int days, char* name, int age, Gender gender, AgeGroup group) {
+    printf("\n========= Weekly Health Summary =========\n");
+    printf("Name        : %s\n", name);
+    printf("Age         : %d\n", age);
+    printf("Gender      : "); printGender(gender);
+    printf("Age Group   : "); printAgeGroup(group);
+
+    for (int i = 0; i < days; i++) {
+        printf("\nDay %d:\n", i + 1);
+        printf(" Water    : %d glasses\n", records[i].drinkWater);
+        printf(" Sleep    : %.2f hours\n", records[i].sleepHours);
+        printf(" Exercise : %d minutes\n", (int)records[i].exerciseMinutes);
+        printf(" Status   : ");
+        printStatus(records[i].status);
+    }
+
+    printf("\nAverage Drink Water : %.2f glasses\n", calculateAverageDrink(records, days));
+    printf("Average Sleep       : %.2f hours\n", calculateAverageSleep(records, days));
+    printf("Average Exercise    : %.2f minutes\n", calculateAverageExercise(records, days));
+
+    HealthStatus finalStatus = calculateFinalStatus(records, days);
+    printf("Final Weekly Status : ");
+    printStatus(finalStatus);
+
+    HealthRecord finalRecord;
+    finalRecord.status = finalStatus;
+    analyzeStatus(&finalRecord);
+}
+
+void printGender(Gender gender) {
+    if (gender == MALE)
+        printf("Male\n");
+    else
+        printf("Female\n");
+}
+
+void printAgeGroup(AgeGroup group) {
+    switch (group) {
+        case CHILD: printf("Child\n"); break;
+        case TEENAGER: printf("Teenager\n"); break;
+        case ADULT: printf("Adult\n"); break;
+        case OLD: printf("Old\n"); break;
+    }
+}
